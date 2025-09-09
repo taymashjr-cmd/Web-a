@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coming Soon</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color:#000 ;
+    color: #fff;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    flex-direction: column;
+  }
+
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .page-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    align-items: stretch;
+  }
+
+  .floating-badge {
+    position: absolute;
+    top: 20px;
+    left: 135px;
+    background-color:#FF660099;
+    color: #000;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+  }
+
+  .container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+  }
+
+  .left {
+    flex: 1 1 500px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 68px;
+    color: white;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .highlight {
+    color: #FF6600;
+    font-weight: bold;
+  }
+
+  .bullets {
+    margin-top: 20px;
+    max-width: 600px;
+  }
+
+  .bullets div {
+    margin-bottom: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+  }
+
+  .bullets i {
+    color: #FF6600;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .right {
+    flex: 1 1 400px;
+    min-width: 280px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .float-wrap {
+    animation: float 4s ease-in-out infinite;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .image-box {
+    background: url('assets/img/or.png') no-repeat center center/cover;
+    border-radius: 20px;
+    height: 400px;
+    box-shadow: 0 0 60px #FF6600;
+    filter: brightness(0.7);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .tag-box {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 0 20px #FF6600;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    max-width: 90%;
+  }
+
+  .tag-box i {
+    color: #FF6600;
+    font-size: 18px;
+  }
+
+  .tag-box div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag-box .title {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .tag-box span:last-child {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .footer-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+  }
+
+  .footer-badge i {
+    color: #00ff99;
+  }
+
+  .section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+
+  .section.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .section img {
+    width: 350px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 40px #000000;
+    animation: float 4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .section .text {
+    flex: 1;
+    color: #ccc;
+    max-width: 600px;
+  }
+
+  .section .text h2 {
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: #FF6600;
+    font-size: 46px;
+  }
+
+  .section .text p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 20px 10px;
+    }
+
+    .page-wrapper {
+      gap: 60px;
+    }
+
+    .container {
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 46px;
+      text-align: center;
+    }
+
+    .description,
+    .bullets div,
+    .section .text p {
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .left,
+    .right {
+      width: 100%;
+      flex: unset;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .image-box {
+      height: 300px;
+    }
+
+    .tag-box {
+      position: static;
+      margin-top: 16px;
+      justify-content: center;
+      max-width: 100%;
+    }
+
+    .footer-badge {
+      position: static;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .section {
+      flex-direction: column !important;
+      align-items: center;
+      text-align: center;
+      padding: 0;
+    }
+
+    .section img {
+      margin-bottom: 20px;
+      width: 80%;
+    }
+
+    .section .text {
+      width: 90%;
+      max-width: none;
+    }
+  }
+
+  /* Matrix background animation */
+  
+    100% { background-position: 0 1000px; }
+  }
+
+  /* Role buttons */
+  .role-btn {
+    background: #000;
+    border: 1px solid #FF6600;
+    border-radius: 10px;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+  }
+
+  .role-btn.active-role {
+    background: #FF6600;
+    color: #000;
+  }
+
+  /* Pop-up animation for h1, h2, p */
+  .pop-up {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .pop-up.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: -2;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: matrix 20s linear infinite;
+}
+
+@keyframes matrix {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+}
+
+
+/* Light Mode Styles */
+body.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+body.light-mode h1 {
+  color: #000;
+}
+
+body.light-mode h2 {
+  color: #FF6600;
+}
+
+body.light-mode .description,
+body.light-mode .bullets div,
+body.light-mode .section .text,
+body.light-mode p {
+  color: #000000 !important;
+}
+
+body.light-mode .container,
+body.light-mode .section {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode input,
+body.light-mode form,
+body.light-mode .role-btn {
+  background-color: #f0f0f0 !important;
+  color: #000 !important;
+}
+
+body.light-mode .role-btn.active-role {
+  background-color: #FF6600 !important;
+  color: #000 !important;
+}
+element.style {
+    min-width: 20px;
+    text-align: center;
+    color: #FF6600;
+}
+</style>
+</link>
+</head>
+<body>
+<div id="tsparticles"></div>
+
+<div style="position: fixed; top: 20px; right: 20px; z-index: 999;">
+  <button onclick="toggleMode()" style="padding: 10px 20px; background: #FF6600; color: #fff; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+    Toggle Mode
+  </button>
+</div>
+
+<div class="floating-badge">👁 Something Big is Coming</div>
+<div class="page-wrapper">
+  <!-- Orange Section -->
+  <div class="container">
+    <div class="left">
+      <h1 id="typed-h1"></h1>
+      <p class="description" id="typed-p"></p>
+      <div class="bullets" id="typed-bullets"></div>
+    </div>
+    <div class="right">
+      <div class="float-wrap">
+        <div class="image-box">
+          <div class="tag-box">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <span class="title" id="typed-title"></span>
+              <span id="typed-subtitle"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Text data to type
+    const h1Text = `Your Student Life
+  is Fragmented.
+  Your Potential is Not.`;
+  
+    const pText = `Effort goes unrewarded. Connections are costly. Learning is scattered.`;
+    const pHighlight = `. A new era of integrated student experience begins soon…`;
+  
+    const bullets = [
+      { icon: "fas fa-mobile-alt", text: "The cost of learning is too high" },
+      { icon: "fas fa-wifi", text: "Connectivity barriers limit potential" },
+      { icon: "fas fa-book-open", text: "Educational resources are fragmented" }
+    ];
+  
+    const titleText = "Revolution Loading...";
+    const subtitleText = "Stay Tuned";
+  
+    // Utility: type text letter by letter inside an element
+    function typeText(el, text, delay = 40) {
+      return new Promise((resolve) => {
+        let i = 0;
+        function type() {
+          if (i < text.length) {
+            el.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+            i++;
+            setTimeout(type, delay);
+          } else {
+            resolve();
+          }
+        }
+        type();
+      });
+    }
+  
+    async function startTyping() {
+      // Clear containers
+      const h1El = document.getElementById("typed-h1");
+      const pEl = document.getElementById("typed-p");
+      const bulletsEl = document.getElementById("typed-bullets");
+      const titleEl = document.getElementById("typed-title");
+      const subtitleEl = document.getElementById("typed-subtitle");
+  
+      h1El.innerHTML = "";
+      pEl.innerHTML = "";
+      bulletsEl.innerHTML = "";
+      titleEl.innerHTML = "";
+      subtitleEl.innerHTML = "";
+  
+      // Type the left text content
+      await typeText(h1El, h1Text);
+      await typeText(pEl, pText);
+  
+      // Append highlight span after paragraph typed
+      let span = document.createElement("span");
+      span.className = "highlight";
+      span.textContent = pHighlight;
+      pEl.appendChild(span);
+  
+      // Type bullets with icons
+      for (const bullet of bullets) {
+        const bulletDiv = document.createElement("div");
+        bulletDiv.style.display = "flex";
+        bulletDiv.style.alignItems = "center";
+        bulletDiv.style.gap = "10px";
+        bulletDiv.style.color = "#fff";
+  
+        const icon = document.createElement("i");
+        icon.className = bullet.icon;
+        icon.style.minWidth = "20px";
+        icon.style.textAlign = "center";
+        icon.style.color = "#FF6600";
+  
+        bulletDiv.appendChild(icon);
+        bulletsEl.appendChild(bulletDiv);
+  
+        await typeText(bulletDiv, " " + bullet.text);
+      }
+  
+      // Type right side tag box text
+      await typeText(titleEl, titleText);
+      await typeText(subtitleEl, subtitleText);
+    }
+  
+    window.onload = startTyping;
+  </script>
+  
+  <!-- Full-Width Wrapper for Dark Blue Section -->
+  <div style="width: 100%; background-color: rgba(0, 0, 0, 0.2); padding: 60px 20px;">
+    <div class="section" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 40px;">
+      <img alt="Left Floating Image" src="assets/img/pic 1.jpeg" style="width: 45%; max-width: 100%; height: auto; border-radius: 12px;"/>
+      <div class="text">
+        <h2>The Barriers Are Real</h2>
+        <ul style="color: #ccc; padding-left: 20px; line-height: 1.8;">
+          <li>Existing products don’t see or consider your unique circumstances </li>
+          <li>A fragmented and disconnected landscape for gaining knowledge</li>
+          <li>Unrewarded effort</li>
+          <li>Limited access to opportunities as you go out into the world</li>
+          <li>Parental anxiety </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Default Section -->
+  <div class="section reverse" style="margin-top: 40px; display: flex; align-items: center; gap: 40px;">
+    <img alt="Right Floating Image" src="assets/img/fam.jpeg" style="width: 45%; max-width: 100%; height: auto; border-radius: 12px;"/>
+    <div class="text">
+      <h2>But What If... There Was a Way?</h2>
+      <p>
+        Imagine a world where your phone becomes your gateway to unlimited learning, where every lesson completed earns you rewards, and where education is truly accessible to all.
+
+        That world is closer than you think. 
+      </p>
+    </div>
+  </div>
+  
+  
+<section style="background-color: rgba(0, 0, 0, 0.2); color: white; padding: 60px 20px; text-align: center; font-family: 'Inter', sans-serif;">
+  <div class="form-heading">
+    <h2 style="font-size: 2.5rem; color: #FF6600;">Be the <span style="color: white;">First to Know</span></h2>
+    <p style="font-size: 1.2rem; margin: 20px auto; max-width: 600px;">
+      Join the movement. Get exclusive early access and bonus rewards when we launch.
+    </p>
+  </div>
+  <div class="form-container" style="margin: 40px auto 0;">
+    <form>
+      <div class="form-group" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
+        <input type="email" placeholder="Your email address" required style="padding: 15px; background-color: #000; color: #fff; border: 1px solid #FF6600; border-radius: 8px; flex: 1; min-width: 250px;">
+        <input type="text" placeholder="WhatsApp number (optional)" style="padding: 15px; background-color: #000; color: #fff; border: 1px solid #FF6600; border-radius: 8px; flex: 1; min-width: 250px;">
+      </div>
+
+      <p style="margin: 10px 0;">I am a:</p>
+      <div class="role-selection" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+        <div class="role-btn" onclick="selectRole(this)" style="padding: 15px; border-radius: 8px; border: 1px solid #FF6600; background: #000; color: white; cursor: pointer;">Student</div>
+        <div class="role-btn" onclick="selectRole(this)" style="padding: 15px; border-radius: 8px; border: 1px solid #FF6600; background: #000; color: white; cursor: pointer;">Parent</div>
+        <div class="role-btn" onclick="selectRole(this)" style="padding: 15px; border-radius: 8px; border: 1px solid #FF6600; background: #000; color: white; cursor: pointer;">Teacher</div>
+      </div>
+
+      <button type="submit" class="submit-btn" style="width: 100%; background-color: #FF6600; color: #000; border: none; padding: 15px; font-size: 1.2rem; border-radius: 8px; cursor: pointer;">Join the Movement</button>
+    </form>
+    <p class="footer-text" style="font-size: 0.85rem; margin-top: 20px; color: #bbb;">
+      By joining, you agree to receive updates about our revolutionary educational platform. Unsubscribe anytime.
+    </p>
+  </div>
+</section>
+<script>
+  function selectRole(button) {
+    document.querySelectorAll('.role-btn').forEach(btn => {
+      btn.classList.remove('selected');
+    });
+    button.classList.add('selected');
+  }
+</script>
+
+<!-- Social media icons -->
+  <div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem;">
+      <a href="#" style="color: #FF6600;" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" style="color: #FF6600;" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color: #FF6600;" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" style="color: #FF6600;" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // JavaScript to handle role selection active state
+  const roleButtons = document.querySelectorAll('.role-btn');
+  roleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      roleButtons.forEach(b => b.classList.remove('active-role'));
+      btn.classList.add('active-role');
+      btn.querySelector('input').checked = true;
+    });
+  });
+</script>
+
+<div class="footer-badge">
+  <i class="fas fa-hand-sparkles"></i>
+</div>
+
+<script>
+  tsParticles.load("tsparticles", {
+    background: {
+      color: "#000"
+    },
+    particles: {
+      number: {
+        value: 70,
+        density: {
+          enable: true,
+          area: 800
+        }
+      },
+      color: {
+        value: "#00ff99"
+      },
+      shape: {
+        type: ["circle", "square", "triangle"]
+      },
+      opacity: {
+        value: 0.4,
+        random: true
+      },
+      size: {
+        value: { min: 2, max: 5 },
+        random: true
+      },
+      move: {
+        enable: true,
+        speed: 1,
+        direction: "none",
+        random: true,
+        straight: false,
+        outModes: {
+          default: "out"
+        }
+      },
+      links: {
+        enable: true,
+        distance: 120,
+        color: "#00ff99",
+        opacity: 0.3,
+        width: 1
+      }
+    },
+    fullScreen: { enable: false }
+  });
+</script>
+
+<script>
+  // Pop-up animation using IntersectionObserver
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing after animation triggers
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('h1, h2, p').forEach(el => {
+    el.classList.add('pop-up'); // Initial state
+    observer.observe(el);
+  });
+</script>
+
+
+<script>
+  function toggleMode() {
+    document.body.classList.toggle("light-mode");
+  }
+</script>
+
+</body>
+</html>
